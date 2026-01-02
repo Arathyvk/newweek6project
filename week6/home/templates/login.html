@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="login-container">
+  <div class="login-box">
+    <h2 class="login-title">User Login</h2>
+
+    <form method="POST" novalidate class="login-form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <input class="form-input" type="text" name="username" placeholder="Username" required>
+      </div>
+
+      <div class="form-group">
+        <input class="form-input" type="password" name="password" placeholder="Password" required>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn-login">Login</button>
+      </div>
+
+     
+      <ul class="error-messages">
+        {% if error.field %}
+          <li style='color:red;'>{{ error.field }}</li>
+        {% endif %}
+        {% if error.invalid %}
+          <li style='color:red;'>{{ error.invalid }}</li>
+        {% endif %}
+      </ul>
+
+      <p class="signup-text">
+        Don't have an account?
+        <a href="{% url 'signup_view' %}" class="signup-link">Sign up</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-lg p-4" style="max-width: 450px; width: 100%; border-radius: 10px;">
+        <h4 class="text-center text-danger mb-3">
+            <i class="fa-solid fa-triangle-exclamation"></i> Confirm Deletion
+        </h4>
+        <p class="text-center">Are you sure you want to delete <strong>{{ user_obj.username }}</strong>?</p>
+
+        <form method="post" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger px-4">
+                <i class="fa-solid fa-trash"></i> Yes, Delete
+            </button>
+            <a href="{% url 'admin_home' %}" class="btn btn-secondary px-4 ms-2">
+                <i class="fa-solid fa-xmark"></i> Cancel
+            </a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
